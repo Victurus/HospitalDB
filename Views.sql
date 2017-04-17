@@ -28,13 +28,13 @@ AS
 GO
 
 -- вывод данных из представления
-SELECT * FROM doctor_finder
-GO
+--SELECT * FROM doctor_finder
+--GO
 -- выводится команда создания представления(построчно)
 -- если указана опция WITH ENCRYPTION, то будет выведено
 --> Текст для объекта "doctor_finder" зашифрован. <--
-EXEC SP_HELPTEXT 'doctor_finder';
-GO
+--EXEC SP_HELPTEXT 'doctor_finder';
+--GO
 
 CREATE VIEW patients_info
 WITH ENCRYPTION, SCHEMABINDING
@@ -61,8 +61,8 @@ CREATE UNIQUE CLUSTERED INDEX IDX_pi
 ON dbo.patients_info ([ФИО пациента], [Палата №])
 GO
 
-SELECT * FROM patients_info
-GO
+--SELECT * FROM patients_info
+--GO
 
 CREATE VIEW VIEW_hospital
 WITH ENCRYPTION, SCHEMABINDING
@@ -80,14 +80,14 @@ CREATE UNIQUE CLUSTERED INDEX IDX_hosp
 ON VIEW_hospital([Название больницы], [Номер])
 GO
 
-SELECT * FROM VIEW_hospital
+--SELECT * FROM VIEW_hospital
 
 SET NUMERIC_ROUNDABORT OFF;
 SET ANSI_PADDING, ANSI_WARNINGS, CONCAT_NULL_YIELDS_NULL, ARITHABORT, QUOTED_IDENTIFIER ON;
 GO
 
-INSERT INTO VIEW_hospital ([Название больницы], [Номер], [Дата основания], [ID региона]) VALUES
-	(N'Медус пунктус', N'1742', N'10-03-2000', N'5')
+--INSERT INTO VIEW_hospital ([Название больницы], [Номер], [Дата основания], [ID региона]) VALUES
+--	(N'Медус пунктус', N'1742', N'10-03-2000', N'5')
 
-SELECT * FROM hospital h
-WHERE h.RegionID = N'5'
+--SELECT * FROM hospital h
+--WHERE h.RegionID = N'5'

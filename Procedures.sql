@@ -326,12 +326,12 @@ GO
 
 -- вызов хранимых процедур
 
---DECLARE @MYCURSOR CURSOR;
---EXEC dbo.hospital_free_beds_cnt DEFAULT, 0, @MYCURSOR OUTPUT;
+DECLARE @MYCURSOR CURSOR;
+EXEC dbo.hospital_free_beds_cnt DEFAULT, 1, @MYCURSOR OUTPUT;
 --FETCH NEXT FROM @MYCURSOR;
---CLOSE @MYCURSOR;
---DEALLOCATE @MYCURSOR;
---EXEC dbo.hospital_free_beds_cnt 5, 1, @MYCURSOR OUTPUT;
+CLOSE @MYCURSOR;
+DEALLOCATE @MYCURSOR;
+EXEC dbo.hospital_free_beds_cnt 5, 1, @MYCURSOR OUTPUT;
 
 --EXEC dbo.hospital_doctor_cnt DEFAULT;
 --EXEC dbo.hospital_doctor_cnt 15;

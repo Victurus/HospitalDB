@@ -2,7 +2,7 @@ USE Hospitals
 GO
 PRINT 'REGION'
 BULK INSERT dbo.region
-	FROM 'C:\Users\Виктор\Documents\SQL Server Management Studio\База данных на тему Больница\DataFillers\Region_Filler.txt'
+	FROM 'C:\Users\Виктор\Documents\SQL Server Management Studio\HospitalDB\DataFillers\Region_Filler.txt'
 	WITH
 	(
 		CODEPAGE='65001', -- кодовая страница для нормального чтения русских символов
@@ -11,7 +11,7 @@ BULK INSERT dbo.region
 	)
 PRINT 'HOSPITAL'
 BULK INSERT dbo.hospital
-	FROM 'C:\Users\Виктор\Documents\SQL Server Management Studio\База данных на тему Больница\DataFillers\Hospital_Filler.txt'
+	FROM 'C:\Users\Виктор\Documents\SQL Server Management Studio\HospitalDB\DataFillers\Hospital_Filler.txt'
 	WITH
 	(
 		CODEPAGE='65001', -- кодовая страница для нормального чтения русских символов
@@ -20,7 +20,7 @@ BULK INSERT dbo.hospital
 	)
 PRINT 'OTDEL'
 BULK INSERT dbo.otdel
-	FROM 'C:\Users\Виктор\Documents\SQL Server Management Studio\База данных на тему Больница\DataFillers\Otdel_Filler.txt'
+	FROM 'C:\Users\Виктор\Documents\SQL Server Management Studio\HospitalDB\DataFillers\Otdel_Filler.txt'
 	WITH
 	(
 		CODEPAGE='65001', -- кодовая страница для нормального чтения русских символов
@@ -29,7 +29,7 @@ BULK INSERT dbo.otdel
 	)
 PRINT 'SPECIALIZE'
 BULK INSERT dbo.specialize
-	FROM 'C:\Users\Виктор\Documents\SQL Server Management Studio\База данных на тему Больница\DataFillers\Specializes_Filler.txt'
+	FROM 'C:\Users\Виктор\Documents\SQL Server Management Studio\HospitalDB\DataFillers\Specializes_Filler.txt'
 	WITH
 	(
 		CODEPAGE='65001', -- кодовая страница для нормального чтения русских символов
@@ -38,7 +38,7 @@ BULK INSERT dbo.specialize
 	)
 PRINT 'ROOM'
 BULK INSERT dbo.room
-	FROM 'C:\Users\Виктор\Documents\SQL Server Management Studio\База данных на тему Больница\DataFillers\Room_Filler.txt'
+	FROM 'C:\Users\Виктор\Documents\SQL Server Management Studio\HospitalDB\DataFillers\Room_Filler.txt'
 	WITH
 	(
 		CODEPAGE='65001', -- кодовая страница для нормального чтения русских символов
@@ -47,7 +47,7 @@ BULK INSERT dbo.room
 	)
 PRINT 'HOSPITAL_PROFESSION'
 BULK INSERT dbo.hospital_profession
-	FROM 'C:\Users\Виктор\Documents\SQL Server Management Studio\База данных на тему Больница\DataFillers\Hospital_profession_Filler.txt'
+	FROM 'C:\Users\Виктор\Documents\SQL Server Management Studio\HospitalDB\DataFillers\Hospital_profession_Filler.txt'
 	WITH
 	(
 		CODEPAGE='65001', -- кодовая страница для нормального чтения русских символов
@@ -56,7 +56,7 @@ BULK INSERT dbo.hospital_profession
 	)
 PRINT 'INSURANCE_ORG'
 BULK INSERT dbo.insurance_org
-	FROM 'C:\Users\Виктор\Documents\SQL Server Management Studio\База данных на тему Больница\DataFillers\Insurance_org_Filler.txt'
+	FROM 'C:\Users\Виктор\Documents\SQL Server Management Studio\HospitalDB\DataFillers\Insurance_org_Filler.txt'
 	WITH
 	(
 		CODEPAGE='65001', -- кодовая страница для нормального чтения русских символов
@@ -65,7 +65,7 @@ BULK INSERT dbo.insurance_org
 	)
 PRINT 'DOCTOR'
 BULK INSERT dbo.doctor
-	FROM 'C:\Users\Виктор\Documents\SQL Server Management Studio\База данных на тему Больница\DataFillers\Doctor_Filler.txt'
+	FROM 'C:\Users\Виктор\Documents\SQL Server Management Studio\HospitalDB\DataFillers\Doctor_Filler.txt'
 	WITH
 	(
 		CODEPAGE='65001', -- кодовая страница для нормального чтения русских символов
@@ -74,7 +74,7 @@ BULK INSERT dbo.doctor
 	)
 PRINT 'DOCTOR_INSURANCE_NUMBER'
 BULK INSERT dbo.doctor_insurance_number
-	FROM 'C:\Users\Виктор\Documents\SQL Server Management Studio\База данных на тему Больница\DataFillers\Doctor_insurance_number_Filler.txt'
+	FROM 'C:\Users\Виктор\Documents\SQL Server Management Studio\HospitalDB\DataFillers\Doctor_insurance_number_Filler.txt'
 	WITH
 	(
 		CODEPAGE='65001', -- кодовая страница для нормального чтения русских символов
@@ -83,7 +83,7 @@ BULK INSERT dbo.doctor_insurance_number
 	)
 PRINT 'PATIENT_PERSONAL_INFO'
 BULK INSERT dbo.patient_personal_info
-	FROM 'C:\Users\Виктор\Documents\SQL Server Management Studio\База данных на тему Больница\DataFillers\Patient_personal_info_Filler.txt'
+	FROM 'C:\Users\Виктор\Documents\SQL Server Management Studio\HospitalDB\DataFillers\Patient_personal_info_Filler.txt'
 	WITH
 	(
 		CODEPAGE='65001', -- кодовая страница для нормального чтения русских символов
@@ -92,7 +92,7 @@ BULK INSERT dbo.patient_personal_info
 	)
 PRINT 'PATIENT_INSURANCE_NUMBER'
 BULK INSERT dbo.patient_insurance_number
-	FROM 'C:\Users\Виктор\Documents\SQL Server Management Studio\База данных на тему Больница\DataFillers\Patient_insurance_number_Filler.txt'
+	FROM 'C:\Users\Виктор\Documents\SQL Server Management Studio\HospitalDB\DataFillers\Patient_insurance_number_Filler.txt'
 	WITH
 	(
 		CODEPAGE='65001', -- кодовая страница для нормального чтения русских символов
@@ -101,7 +101,7 @@ BULK INSERT dbo.patient_insurance_number
 	)
 PRINT 'OPERATION'
 BULK INSERT dbo.operation
-	FROM 'C:\Users\Виктор\Documents\SQL Server Management Studio\База данных на тему Больница\DataFillers\Operation_Filler.txt'
+	FROM 'C:\Users\Виктор\Documents\SQL Server Management Studio\HospitalDB\DataFillers\Operation_Filler.txt'
 	WITH
 	(
 		CODEPAGE='65001', -- кодовая страница для нормального чтения русских символов
@@ -110,7 +110,7 @@ BULK INSERT dbo.operation
 	)
 PRINT 'OPERATION_PATIENT'
 BULK INSERT dbo.operation_patient
-	FROM 'C:\Users\Виктор\Documents\SQL Server Management Studio\База данных на тему Больница\DataFillers\Operation_patient_Filler.txt'
+	FROM 'C:\Users\Виктор\Documents\SQL Server Management Studio\HospitalDB\DataFillers\Operation_patient_Filler.txt'
 	WITH
 	(
 		CODEPAGE='65001', -- кодовая страница для нормального чтения русских символов
@@ -119,7 +119,7 @@ BULK INSERT dbo.operation_patient
 	)
 PRINT 'PATIENT'
 BULK INSERT dbo.patient
-	FROM 'C:\Users\Виктор\Documents\SQL Server Management Studio\База данных на тему Больница\DataFillers\Patient_Filler.txt'
+	FROM 'C:\Users\Виктор\Documents\SQL Server Management Studio\HospitalDB\DataFillers\Patient_Filler.txt'
 	WITH
 	(
 		CODEPAGE='65001', -- кодовая страница для нормального чтения русских символов
@@ -128,7 +128,7 @@ BULK INSERT dbo.patient
 	)
 PRINT 'PATIENT_HISTORY'
 BULK INSERT dbo.patient_history
-	FROM 'C:\Users\Виктор\Documents\SQL Server Management Studio\База данных на тему Больница\DataFillers\Patient_history_Filler.txt'
+	FROM 'C:\Users\Виктор\Documents\SQL Server Management Studio\HospitalDB\DataFillers\Patient_history_Filler.txt'
 	WITH
 	(
 		CODEPAGE='65001', -- кодовая страница для нормального чтения русских символов
