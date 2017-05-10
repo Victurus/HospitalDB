@@ -7,7 +7,8 @@ BULK INSERT dbo.region
 	(
 		CODEPAGE='65001', -- кодовая страница для нормального чтения русских символов
 		FIELDTERMINATOR = ',',
-		ROWTERMINATOR = '\n'
+		ROWTERMINATOR = '
+'
 	)
 PRINT 'HOSPITAL'
 BULK INSERT dbo.hospital
@@ -16,7 +17,8 @@ BULK INSERT dbo.hospital
 	(
 		CODEPAGE='65001', -- кодовая страница для нормального чтения русских символов
 		FIELDTERMINATOR = ',',
-		ROWTERMINATOR = '\n'
+		ROWTERMINATOR = '
+'
 	)
 PRINT 'OTDEL'
 BULK INSERT dbo.otdel
@@ -25,7 +27,8 @@ BULK INSERT dbo.otdel
 	(
 		CODEPAGE='65001', -- кодовая страница для нормального чтения русских символов
 		FIELDTERMINATOR = ',',
-		ROWTERMINATOR = '\n'
+		ROWTERMINATOR = '
+'
 	)
 PRINT 'SPECIALIZE'
 BULK INSERT dbo.specialize
@@ -34,7 +37,8 @@ BULK INSERT dbo.specialize
 	(
 		CODEPAGE='65001', -- кодовая страница для нормального чтения русских символов
 		FIELDTERMINATOR = ',',
-		ROWTERMINATOR = '\n'
+		ROWTERMINATOR = '
+'
 	)
 PRINT 'ROOM'
 BULK INSERT dbo.room
@@ -43,7 +47,8 @@ BULK INSERT dbo.room
 	(
 		CODEPAGE='65001', -- кодовая страница для нормального чтения русских символов
 		FIELDTERMINATOR = ',',
-		ROWTERMINATOR = '\n'
+		ROWTERMINATOR = '
+'
 	)
 PRINT 'HOSPITAL_PROFESSION'
 BULK INSERT dbo.hospital_profession
@@ -52,7 +57,8 @@ BULK INSERT dbo.hospital_profession
 	(
 		CODEPAGE='65001', -- кодовая страница для нормального чтения русских символов
 		FIELDTERMINATOR = ',',
-		ROWTERMINATOR = '\n'
+		ROWTERMINATOR = '
+'
 	)
 PRINT 'INSURANCE_ORG'
 BULK INSERT dbo.insurance_org
@@ -61,7 +67,8 @@ BULK INSERT dbo.insurance_org
 	(
 		CODEPAGE='65001', -- кодовая страница для нормального чтения русских символов
 		FIELDTERMINATOR = ',',
-		ROWTERMINATOR = '\n'
+		ROWTERMINATOR = '
+'
 	)
 PRINT 'DOCTOR'
 BULK INSERT dbo.doctor
@@ -70,7 +77,8 @@ BULK INSERT dbo.doctor
 	(
 		CODEPAGE='65001', -- кодовая страница для нормального чтения русских символов
 		FIELDTERMINATOR = ',',
-		ROWTERMINATOR = '\n'
+		ROWTERMINATOR = '
+'
 	)
 PRINT 'DOCTOR_INSURANCE_NUMBER'
 BULK INSERT dbo.doctor_insurance_number
@@ -79,7 +87,8 @@ BULK INSERT dbo.doctor_insurance_number
 	(
 		CODEPAGE='65001', -- кодовая страница для нормального чтения русских символов
 		FIELDTERMINATOR = ',',
-		ROWTERMINATOR = '\n'
+		ROWTERMINATOR = '
+'
 	)
 PRINT 'PATIENT_PERSONAL_INFO'
 BULK INSERT dbo.patient_personal_info
@@ -88,7 +97,8 @@ BULK INSERT dbo.patient_personal_info
 	(
 		CODEPAGE='65001', -- кодовая страница для нормального чтения русских символов
 		FIELDTERMINATOR = ',',
-		ROWTERMINATOR = '\n'
+		ROWTERMINATOR = '
+'
 	)
 PRINT 'PATIENT_INSURANCE_NUMBER'
 BULK INSERT dbo.patient_insurance_number
@@ -97,7 +107,8 @@ BULK INSERT dbo.patient_insurance_number
 	(
 		CODEPAGE='65001', -- кодовая страница для нормального чтения русских символов
 		FIELDTERMINATOR = ',',
-		ROWTERMINATOR = '\n'
+		ROWTERMINATOR = '
+'
 	)
 PRINT 'OPERATION'
 BULK INSERT dbo.operation
@@ -106,7 +117,8 @@ BULK INSERT dbo.operation
 	(
 		CODEPAGE='65001', -- кодовая страница для нормального чтения русских символов
 		FIELDTERMINATOR = ',',
-		ROWTERMINATOR = '\n'
+		ROWTERMINATOR = '
+'
 	)
 PRINT 'OPERATION_PATIENT'
 BULK INSERT dbo.operation_patient
@@ -115,7 +127,8 @@ BULK INSERT dbo.operation_patient
 	(
 		CODEPAGE='65001', -- кодовая страница для нормального чтения русских символов
 		FIELDTERMINATOR = ',',
-		ROWTERMINATOR = '\n'
+		ROWTERMINATOR = '
+'
 	)
 PRINT 'PATIENT'
 BULK INSERT dbo.patient
@@ -124,7 +137,8 @@ BULK INSERT dbo.patient
 	(
 		CODEPAGE='65001', -- кодовая страница для нормального чтения русских символов
 		FIELDTERMINATOR = ',',
-		ROWTERMINATOR = '\n'
+		ROWTERMINATOR = '
+'
 	)
 PRINT 'PATIENT_HISTORY'
 BULK INSERT dbo.patient_history
@@ -133,5 +147,6 @@ BULK INSERT dbo.patient_history
 	(
 		CODEPAGE='65001', -- кодовая страница для нормального чтения русских символов
 		FIELDTERMINATOR = ',',
-		ROWTERMINATOR = '\n'
+		ROWTERMINATOR = '
+'
 	)

@@ -74,7 +74,7 @@ GO
 
 CREATE TABLE dbo.region
 (	ID INT IDENTITY(1, 1) NOT NULL,
-	Name NVARCHAR(100) NOT NULL,
+	Name NVARCHAR(200) NOT NULL,
 	CONSTRAINT PK_region PRIMARY KEY(ID),
 	CONSTRAINT UQ_name_region UNIQUE(Name)
 )
@@ -134,7 +134,7 @@ GO
 CREATE TABLE dbo.otdel
 (	ID INT IDENTITY(1,1) NOT NULL,
 	HospitalID INT NOT NULL,
-	Name NVARCHAR(100) NOT NULL,
+	Name NVARCHAR(150) NOT NULL,
 	CONSTRAINT PK_otdel PRIMARY KEY(ID),
 	CONSTRAINT FK_hospital FOREIGN KEY(HospitalID) REFERENCES dbo.hospital(ID)
 )
@@ -171,7 +171,7 @@ GO
 
 CREATE TABLE dbo.room
 (	ID INT IDENTITY(1, 1) NOT NULL,
-	Name NVARCHAR(10) NOT NULL,     -- 123абвгд ...
+	Name NVARCHAR(15) NOT NULL,     -- 123абвгд ...
 	HospitalID INT NOT NULL,
 	OtdelID INT NOT NULL,
 	SpecializeID INT NOT NULL,
@@ -186,7 +186,7 @@ GO
 
 CREATE TABLE dbo.hospital_profession
 (	ID INT IDENTITY(1, 1) NOT NULL,
-	Name NVARCHAR(50) NOT NULL,
+	Name NVARCHAR(90) NOT NULL,
 	Salary NVARCHAR(50) NOT NULL,
 	Bonus_salary NVARCHAR(50),
 	Bonus_salary_tarif NVARCHAR(150),
@@ -207,8 +207,8 @@ GO
 
 CREATE TABLE dbo.insurance_org
 (	ID INT IDENTITY(1, 1) NOT NULL,
-	Name NVARCHAR(100) NOT NULL,
-	Addres NVARCHAR(100) NOT NULL,
+	Name NVARCHAR(200) NOT NULL,
+	Addres NVARCHAR(200) NOT NULL,
 	CONSTRAINT PK_insurance_org PRIMARY KEY (ID),
 	CONSTRAINT UQ_name_addres UNIQUE(Name, Addres)
 )
@@ -225,11 +225,11 @@ CREATE TABLE dbo.doctor
 	Termination_date DATETIME,                         -- дата увольнения со службы
 	Birthday DATETIME NOT NULL, 
 	Experience INT NOT NULL,
-	Hier_education_institute NVARCHAR(150) NOT NULL, 
+	Hier_education_institute NVARCHAR(200) NOT NULL, 
 	Mobile_number NVARCHAR(20) NOT NULL,
 	Home_number NVARCHAR(20) NOT NULL,
 	Additional_number NVARCHAR(20),
-	Addres NVARCHAR(100) NOT NULL,
+	Addres NVARCHAR(150) NOT NULL,
 	Driver_license BIT,
 	Taxpayer_id_number NVARCHAR(50) NOT NULL, -- ИНН
 	Insurance_individual_account_number NVARCHAR(50) NOT NULL, -- СНИЛС
@@ -294,7 +294,7 @@ CREATE TABLE dbo.patient_personal_info
 	Mobile_number NVARCHAR(50) NOT NULL,
 	Home_number NVARCHAR(50) NOT NULL,
 	Additional_number NVARCHAR(50),
-	Addres NVARCHAR(50) NOT NULL,
+	Addres NVARCHAR(100) NOT NULL,
 	Driver_license BIT,
 	Taxpayer_id_number NVARCHAR(50) NOT NULL, -- ИНН
 	Insurance_individual_account_number NVARCHAR(50) NOT NULL, -- СНИЛС
@@ -302,7 +302,7 @@ CREATE TABLE dbo.patient_personal_info
 	CONSTRAINT PK_patient_personal_info PRIMARY KEY NONCLUSTERED (ID),
 	CONSTRAINT UQ_Patient_Taxpayer_id_number UNIQUE (Taxpayer_id_number),
 	CONSTRAINT UQ_Patient_Insurance_individual_account_number UNIQUE (Insurance_individual_account_number)
-)
+) ON Patients_dat
 GO
 
 CREATE TRIGGER dbo.patient_personal_info_name ON dbo.patient_personal_info
@@ -326,12 +326,13 @@ CREATE TABLE dbo.patient_insurance_number
 	CONSTRAINT FK_insurance_org_patient_insurance_number FOREIGN KEY(Insurance_orgID) REFERENCES dbo.insurance_org(ID),
 	CONSTRAINT FK_patient_personal_info_patient_insurance_number FOREIGN KEY(Patient_personal_infoID) REFERENCES dbo.patient_personal_info(ID),
 	CONSTRAINT UQ_patient_personal_info_insurance_orgID UNIQUE CLUSTERED (Patient_personal_infoID, Insurance_orgID)
-)
+) ON Patients_dat
 GO
 
 CREATE TABLE dbo.operation
 (	ID INT IDENTITY(1, 1) NOT NULL,
-	Name NVARCHAR(100) NOT NULL,
+	Name NVARCHAR(150) NOT NULL,
+	Cost INT NOT NULL,
 	CONSTRAINT PK_operation PRIMARY KEY(ID)
 )
 GO
@@ -349,12 +350,15 @@ GO
 
 CREATE TABLE dbo.operation_patient
 (	ID INT IDENTITY(1, 1) NOT NULL,
+	DoctorID INT NOT NULL,
 	Patient_personal_infoID INT NOT NULL,
-	operationID INT NOT NULL,
+	OperationID INT NOT NULL,
+	DateOfOperation DATETIME NOT NULL,
 	CONSTRAINT PK_operation_patient PRIMARY KEY (ID),
 	CONSTRAINT FK_patient_personal_info_operation_patient FOREIGN KEY(Patient_personal_infoID) REFERENCES dbo.patient_personal_info(ID),
-	CONSTRAINT FK_operation FOREIGN KEY(operationID) REFERENCES dbo.operation(ID)
-)
+	CONSTRAINT FK_operation FOREIGN KEY(operationID) REFERENCES dbo.operation(ID),
+	CONSTRAINT FK_doctorID FOREIGN KEY(DoctorID) REFERENCES dbo.doctor(ID)
+) ON Patients_dat
 GO
 --	У человека может быть несколько страховок
 
@@ -363,8 +367,8 @@ CREATE TABLE dbo.patient
 	DoctorID INT NOT NULL,
 	Patient_personal_infoID INT NOT NULL,
 	RoomID INT NOT NULL, -- больной лежит в одной комнате
-	Day_of_entry DATE NOT NULL DEFAULT SYSDATETIME(),
-	Day_of_discharge DATE,
+	Day_of_entry DATETIME NOT NULL DEFAULT SYSDATETIME(),
+	Day_of_discharge DATETIME,
 	Admission_diagnosis NVARCHAR(500) NOT NULL, -- диагноз при поступлении
 	Clinical_diagnosis NVARCHAR(500),
 	Med_fear_pay BIT NOT NULL, -- мед страх платит?
@@ -374,7 +378,7 @@ CREATE TABLE dbo.patient
 	CONSTRAINT FK_patient_personal_info_patient FOREIGN KEY (Patient_personal_infoID) REFERENCES dbo.patient_personal_info(ID),
 	CONSTRAINT FK_room_patient FOREIGN KEY (RoomID) REFERENCES dbo.room(ID),
 	CONSTRAINT UQ_roomID_patient UNIQUE (RoomID)
-)
+) ON Patients_dat
 GO
 
 CREATE TRIGGER dbo.patient_insert ON dbo.patient
@@ -425,7 +429,7 @@ CREATE TABLE dbo.patient_history
 	CONSTRAINT PK_patient_history PRIMARY KEY (ID),
 	CONSTRAINT FK_patient_personal_info_patient_history FOREIGN KEY (Patient_personal_infoID) REFERENCES dbo.patient_personal_info(ID), 
 	CONSTRAINT FK_doctor_patient_history FOREIGN KEY (DoctorID) REFERENCES dbo.doctor(ID)
- )
+ ) ON Patients_dat
 GO
 
 CREATE TRIGGER dbo.patient_del ON dbo.patient

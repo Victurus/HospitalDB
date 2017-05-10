@@ -411,3 +411,6 @@ SELECT
 	* 
 FROM dbo.patient p, dbo.room r
 WHERE p.RoomID = r.ID
+
+SELECT * FROM dbo.room r
+where r.Name like '%%'

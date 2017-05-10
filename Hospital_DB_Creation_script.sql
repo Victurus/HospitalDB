@@ -1,10 +1,12 @@
-DROP DATABASE Hospitals -- удалить базу данных 
+USE master;
+IF DB_ID(N'Hospitals') IS NOT NULL
+	DROP DATABASE Hospitals; -- удалить базу данных 
 GO
 -- разрешить работать с настройками с закладки "дополнительно" (advanced) --
 sp_configure 'show advanced', 1;
 RECONFIGURE WITH OVERRIDE;
 GO
--- разрешение на создание автономных баз двнных -- 
+-- разрешение на создание автономных баз данных -- 
 sp_configure 'contained database authentication', 1;
 RECONFIGURE WITH OVERRIDE;
 GO
@@ -16,22 +18,22 @@ CREATE DATABASE Hospitals     /* создание базы */
 								 NONE - неавтономна€ Ѕƒ
 								 PARTIAL - частично автономна€*/
 ON
-( NAME = Hospital_dat,     /* ON - означает €вное указание файлов базы */
+PRIMARY ( NAME = Hospital_dat,     /* ON - означает €вное указание файлов базы */
 	FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\DATA\hospitaldat.mdf', /* их распределение на диске */
 	SIZE = 600MB,
 	MAXSIZE = 2048MB,
 	FILEGROWTH = 10MB ),
 
-FILEGROUP HospGroup 
-( NAME = HospGroup_dat,
-	FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\DATA\hospGROUPdat.mdf',
+FILEGROUP Patients_dat
+( NAME = Patients_dat,
+	FILENAME = 'A:\DB_Hospitals\patientsdat.ndf', -- ¬торичный файл
 	SIZE = 500MB,
 	MAXSIZE = 2048MB,
 	FILEGROWTH = 20MB )
 
 LOG ON							/* аналогично предыдущему только дл€ логов */
 ( NAME = Hospital_log,
-	FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\DATA\hospitallog.ldf', 
+	FILENAME = 'B:\DB_Hospitals\hospitallog.ldf', 
 	SIZE = 100MB,
 	MAXSIZE = 2048MB,
 	FILEGROWTH = 10MB )
@@ -45,4 +47,4 @@ COLLATE Cyrillic_General_100_CI_AI /* «адаЄт параметры сортировки дл€ базы по-ум
 		NESTED_TRIGGERS = ON,  /* определ€ет допустимо ли каскадирование триггеров AFTER */
 		TWO_DIGIT_YEAR_CUTOFF = 2050;
 
-GO --  ак € пон€л это заставл€ет предыдущий код выполнитьс€
+GO
